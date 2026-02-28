@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Personal Portfolio</title>
+    <meta name="description"
+        content="A modern, interactive personal portfolio website showcasing creative development work.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-ring"></div>
+            <span class="preloader-text">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+    <!-- Floating Particles Background -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15" />
+        </svg>
+    </button>
+
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-bracket">&lt;</span>Portfolio<span class="logo-bracket">/&gt;</span>
+            </a>
+
+            <button id="hamburger-menu" class="hamburger" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link" data-text="About">About</a></li>
+                <li><a href="#skills" class="nav-link" data-text="Skills">Skills</a></li>
+                <li><a href="#projects" class="nav-link" data-text="Projects">Projects</a></li>
+                <li><a href="#stats" class="nav-link" data-text="Stats">Stats</a></li>
+                <li><a href="#contact" class="nav-link" data-text="Contact">Contact</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION with Typing Animation -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="hero-greeting animate-on-scroll">Hello, I'm</p>
+                <h1 class="hero-title animate-on-scroll">
+                    <span class="typing-wrapper">
+                        <span id="typingText" class="typing-text"></span>
+                        <span class="typing-cursor">|</span>
+                    </span>
+                </h1>
+                <p class="hero-subtitle animate-on-scroll">I craft <span class="text-gradient">beautiful</span>, <span
+                        class="text-gradient">interactive</span>, and <span class="text-gradient">modern</span> web
+                    experiences that leave a lasting impression.</p>
+                <div class="hero-buttons animate-on-scroll">
+                    <a href="#projects" class="btn btn-primary btn-glow">
+                        <span>View My Work</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Get In Touch</span>
+                    </a>
+                </div>
+                <div class="hero-scroll-indicator animate-on-scroll">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                    <p>Scroll Down</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION with Timeline -->
+        <section class="section about" id="about">
+            <div class="section-container">
+                <h2 class="section-title animate-on-scroll">
+                    <span class="title-number">01.</span> About Me
+                </h2>
+                <div class="about-grid">
+                    <div class="about-text animate-on-scroll">
+                        <p class="about-intro">I am a passionate developer focused on creating clean, efficient, and
+                            visually stunning web applications.</p>
+                        <p>This portfolio is built as a final project to demonstrate modern web development techniques
+                            including responsive design, interactive JavaScript, and clean code principles. I believe in
+                            the power of great design combined with solid engineering.</p>
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-icon">🎨</span>
+                                <span>UI/UX Design</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">⚡</span>
+                                <span>Performance</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">📱</span>
+                                <span>Responsive</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">♿</span>
+                                <span>Accessible</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-card animate-on-scroll">
+                        <div class="card-3d">
+                            <div class="card-inner">
+                                <div class="card-front">
+                                    <div class="card-avatar">👨‍💻</div>
+                                    <h3>Creative Developer</h3>
+                                    <p>Building the web, one pixel at a time</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION — Tech Stack Pills -->
+        <section class="section skills" id="skills">
+            <div class="section-container">
+                <h2 class="section-title animate-on-scroll">
+                    <span class="title-number">02.</span> My Top Skills
+                </h2>
+                <p class="skills-subtitle animate-on-scroll">Here's what I can work with and understand:</p>
+
+                <div class="skill-pills-grid animate-on-scroll">
+                    <!-- Row 1 -->
+                    <div class="skill-pill" style="--pill-color: #e44d26;">
+                        <div class="pill-icon" style="background: linear-gradient(135deg, #e44d26, #f16529);">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><text x="3" y="24" fill="#fff"
+                                    font-family="Arial,sans-serif" font-weight="900"
+                                    font-size="20">&lt;/&gt;</text></svg>
+                        </div>
+                        <span>HTML</span>
+                    </div>
+                    <div class="skill-pill" style="--pill-color: #264de4;">
+                        <div class="pill-icon" style="background: linear-gradient(135deg, #264de4, #2965f1);">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><text x="3" y="24" fill="#fff"
+                                    font-family="Arial,sans-serif" font-weight="900" font-size="16">{ }</text></svg>
+                        </div>
+                        <span>CSS</span>
+                    </div>
+                    <div class="skill-pill" style="--pill-color: #f0db4f;">
+                        <div class="pill-icon" style="background: linear-gradient(135deg, #c8a400, #f0db4f);">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><text x="5" y="24" fill="#fff"
+                                    font-family="Arial,sans-serif" font-weight="900" font-size="22">JS</text></svg>
+                        </div>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-pill" style="--pill-color: #3178c6;">
+                        <div class="pill-icon" style="background: linear-gradient(135deg, #3178c6, #4a90d9);">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><text x="5" y="24" fill="#fff"
+                                    font-family="Arial,sans-serif" font-weight="900" font-size="22">TS</text></svg>
+                        </div>
+                        <span>TypeScript</span>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="skill-pill" style="--pill-color: #777BB3;">
+                        <div class="pill-icon" style="background: linear-gradient(135deg, #4F5B93, #777BB3);">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><text x="2" y="22" fill="#fff"
+                                    font-family="Arial,sans-serif" font-weight="900" font-size="14">PHP</text></svg>
+                        </div>
+                        <span>PHP</span>
+                    </div>
+                    <div class="skill-pill" style="--pill-color: #3776AB;">
+                        <div class="pill-icon" style="background: linear-gradient(135deg, #306998, #FFD43B);">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><text x="5" y="24" fill="#fff"
+                                    font-family="Arial,sans-serif" font-weight="900" font-size="22">Py</text></svg>
+                        </div>
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-pill" style="--pill-color: #00599C;">
+                        <div class="pill-icon" style="background: linear-gradient(135deg, #00599C, #2980b9);">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><text x="8" y="25" fill="#fff"
+                                    font-family="Arial,sans-serif" font-weight="900" font-size="24">C</text></svg>
+                        </div>
+                        <span>C</span>
+                    </div>
+                    <div class="skill-pill" style="--pill-color: #61dafb;">
+                        <div class="pill-icon" style="background: linear-gradient(135deg, #0d8ba1, #61dafb);">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="3" fill="#fff" />
+                                <ellipse cx="16" cy="16" rx="13" ry="5" stroke="#fff" stroke-width="1.2" fill="none" />
+                                <ellipse cx="16" cy="16" rx="13" ry="5" stroke="#fff" stroke-width="1.2" fill="none"
+                                    transform="rotate(60 16 16)" />
+                                <ellipse cx="16" cy="16" rx="13" ry="5" stroke="#fff" stroke-width="1.2" fill="none"
+                                    transform="rotate(120 16 16)" />
+                            </svg>
+                        </div>
+                        <span>React</span>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="skill-pill" style="--pill-color: #FF2D20;">
+                        <div class="pill-icon" style="background: linear-gradient(135deg, #e7281e, #FF2D20);">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><text x="5" y="24" fill="#fff"
+                                    font-family="Arial,sans-serif" font-weight="900" font-size="22">Lv</text></svg>
+                        </div>
+                        <span>Laravel</span>
+                    </div>
+                    <div class="skill-pill" style="--pill-color: #68a063;">
+                        <div class="pill-icon" style="background: linear-gradient(135deg, #2d572c, #68a063);">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><text x="5" y="24" fill="#fff"
+                                    font-family="Arial,sans-serif" font-weight="900" font-size="22">Ex</text></svg>
+                        </div>
+                        <span>Express.js</span>
+                    </div>
+                    <div class="skill-pill" style="--pill-color: #a259ff;">
+                        <div class="pill-icon" style="background: linear-gradient(135deg, #7c3aed, #a259ff);">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><text x="5" y="24" fill="#fff"
+                                    font-family="Arial,sans-serif" font-weight="900" font-size="22">Fg</text></svg>
+                        </div>
+                        <span>Figma</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- PROJECTS SECTION with Tilt Cards -->
+        <section class="section projects" id="projects">
+            <div class="section-container">
+                <h2 class="section-title animate-on-scroll">
+                    <span class="title-number">03.</span> Featured Projects
+                </h2>
+                <div class="project-grid">
+                    <div class="project-card tilt-card animate-on-scroll">
+                        <div class="project-image"
+                            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <div class="project-overlay">
+                                <div class="project-tech-tags">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">JS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Project Alpha</h3>
+                            <p>An amazing application that solves real-world problems with an intuitive interface.</p>
+                            <div class="project-links">
+                                <a href="#" class="project-link">Live Demo ↗</a>
+                                <a href="#" class="project-link">Source Code ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card tilt-card animate-on-scroll">
+                        <div class="project-image"
+                            style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <div class="project-overlay">
+                                <div class="project-tech-tags">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Node.js</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Project Beta</h3>
+                            <p>A beautiful responsive dashboard with seamless animations and dark mode support.</p>
+                            <div class="project-links">
+                                <a href="#" class="project-link">Live Demo ↗</a>
+                                <a href="#" class="project-link">Source Code ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card tilt-card animate-on-scroll">
+                        <div class="project-image"
+                            style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <div class="project-overlay">
+                                <div class="project-tech-tags">
+                                    <span class="tech-tag">Express</span>
+                                    <span class="tech-tag">API</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Project Gamma</h3>
+                            <p>A full-stack web application with real-time data processing and RESTful API.</p>
+                            <div class="project-links">
+                                <a href="#" class="project-link">Live Demo ↗</a>
+                                <a href="#" class="project-link">Source Code ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS SECTION with Animated Counters -->
+        <section class="section stats" id="stats">
+            <div class="section-container">
+                <h2 class="section-title animate-on-scroll">
+                    <span class="title-number">04.</span> By The Numbers
+                </h2>
+                <div class="stats-grid">
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-icon">🚀</div>
+                        <span class="stat-number" data-target="15">0</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-icon">☕</div>
+                        <span class="stat-number" data-target="1200">0</span>
+                        <span class="stat-label">Cups of Coffee</span>
+                    </div>
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-icon">💡</div>
+                        <span class="stat-number" data-target="5000">0</span>
+                        <span class="stat-label">Lines of Code</span>
+                    </div>
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-icon">⭐</div>
+                        <span class="stat-number" data-target="50">0</span>
+                        <span class="stat-label">GitHub Stars</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS / Fun Facts Carousel -->
+        <section class="section testimonials" id="testimonials">
+            <div class="section-container">
+                <h2 class="section-title animate-on-scroll">
+                    <span class="title-number">05.</span> Fun Facts
+                </h2>
+                <div class="carousel-container animate-on-scroll">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide active">
+                            <div class="slide-content">
+                                <span class="slide-emoji">🌙</span>
+                                <p class="slide-text">"I do my best coding at 2 AM with lo-fi beats playing."</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-content">
+                                <span class="slide-emoji">🎮</span>
+                                <p class="slide-text">"When I'm not coding, I'm probably playing indie games or
+                                    sketching UI ideas."</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-content">
+                                <span class="slide-emoji">🤖</span>
+                                <p class="slide-text">"I believe AI-assisted coding is the future — and this portfolio
+                                    proves it."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="prevSlide" aria-label="Previous slide">←</button>
+                        <div class="carousel-dots" id="carouselDots"></div>
+                        <button class="carousel-btn" id="nextSlide" aria-label="Next slide">→</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="section contact" id="contact">
+            <div class="section-container">
+                <h2 class="section-title animate-on-scroll">
+                    <span class="title-number">06.</span> Let's Connect
+                </h2>
+                <div class="contact-wrapper">
+                    <div class="contact-info animate-on-scroll">
+                        <h3>Get in touch</h3>
+                        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of
+                            your vision.</p>
+                        <div class="contact-links">
+                            <a href="mailto:nathanlamaris07@gmail.com" class="contact-link-item">
+                                <span class="contact-icon">📧</span>
+                                <span>nathanlamaris07@gmail.com</span>
+                            </a>
+                            <a href="https://github.com/nthnlmrs" target="_blank" rel="noopener noreferrer"
+                                class="contact-link-item">
+                                <span class="contact-icon">🐙</span>
+                                <span>github.com/nthnlmrs</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/nthnxlsx" target="_blank" rel="noopener noreferrer"
+                                class="contact-link-item">
+                                <span class="contact-icon">💼</span>
+                                <span>linkedin.com/in/nthnxlsx</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-box animate-on-scroll">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="3" required
+                                    placeholder="Your message..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-glow">
+                                <span>Send Message</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13" />
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-main">
+            <!-- Brand Column -->
+            <div class="footer-col footer-brand-col">
+                <a href="#" class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>Portfolio<span class="logo-bracket">/&gt;</span>
+                </a>
+                <p class="footer-tagline">Crafting beautiful, interactive &amp; modern web experiences — one pixel at a
+                    time.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/nthnlmrs" target="_blank" rel="noopener noreferrer" class="social-pill"
+                        aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/nthnxlsx" target="_blank" rel="noopener noreferrer"
+                        class="social-pill" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="mailto:nathanlamaris07@gmail.com" class="social-pill" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        Email
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#skills">My Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#stats">Stats</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Tech Stack Column -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Tech Stack</h4>
+                <ul class="footer-links">
+                    <li><a href="#">HTML5 &amp; CSS3</a></li>
+                    <li><a href="#">JavaScript ES6+</a></li>
+                    <li><a href="#">React.js</a></li>
+                    <li><a href="#">Node.js</a></li>
+                    <li><a href="#">AI-Assisted Dev</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Designed &amp; Built with <span class="footer-heart">❤️</span> by <span class="footer-name">Creative
+                    Developer</span></p>
+            <p class="footer-copy">&copy; <span id="year"></span> All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+
+</html>
